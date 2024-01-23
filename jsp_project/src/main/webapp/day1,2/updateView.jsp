@@ -46,5 +46,24 @@ request.setCharacterEncoding("UTF-8");
         }
       %>
   
+  // Check if the password fields are filled and match
+    boolean isPasswordChange = (pwd != null && !pwd.isEmpty() && pwd.equals(pwd2));
+
+    // Construct the SQL query
+    String sqlUpdate = "UPDATE TBL_MEMBER SET USERNAME = '" + name + "', ... "; // include other fields
+    if (isPasswordChange) {
+        sqlUpdate += ", PWD = '" + pwd + "' ";
+    }
+    sqlUpdate += " WHERE USERID = '" + id + "'";
+
+    try {
+        stmt.executeUpdate(sqlUpdate);
+        // Redirect or notify the user of success
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Handle exceptions
+    }
+    // Close statement and other resources
+
 </body>
 </html>

@@ -27,16 +27,16 @@ input[type=text], input[type=password], select, textarea {
 	padding: 5px;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], input[type=reset], input[type=update]{
 	background-color: #4a76a8;
 	color: #ffffff;
 	border: none;
 	padding: 10px 15px;
-	margin: 5px 0;
+	margin: 5px 5px 0;
 	cursor: pointer;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=update]:hover
 	{
 	background-color: #3a5a78;
 }
@@ -97,46 +97,18 @@ textarea {
 		</div>
 		<div>
 			<input type="submit" value="가입하기"> <input type="reset"
-				value="다시쓰기">
+				value="다시쓰기"><input type = "button" value= "수정하기" name= "update">
+		</div>
+		<div>
+			
 		</div>
 	</form>
-	<!--  <form action="updateView.jsp" name="join" method="post">
-        <div>
-            <label>아이디: <input type="text" name="id"></label>
-        </div>
-        <div>
-            <label>패스워드: <input type="password" name="pwd"></label>
-        </div>
-        <div>
-            <input type="submit" value="회원정보 수정">
-        </div>
-    </form> -->
 </body>
 </html>
-
-<!-- JAVASCRIPT 제어 추가
-js 정규식 영어+숫자 구글링
-1)아이디: 5글자 이상 +영어, 숫자 조합
-2)패스워드: 6글자이상 +두개 '비밀번호', '비밀번호 확인' 같아야 함
-3) 그외에 빈값이 있으면  가입 불가 -->
 
 
 
 <script>
-/* var join = document.join;
-function check(){
-	const regType = /^[a-zA-Z0-9]*$/;	
-	let data = join.id.value;
-	if (!regType.test(data)) {
-		$("#idRequired").html("아이디가 조건에 맞지 않습니다"); //별도로 만든 유효성 HTML 구문
-		alert("아이디가 조건에 맞지 않습니다");
-		return;
-	}else{
-	...
-	};
-}
- */
- 
 
 	function validateForm(){
 		var id = document.forms["join"]["id"].value;
