@@ -35,7 +35,8 @@ request.setCharacterEncoding("UTF-8");
         session.setAttribute("isLoggedIn", false);
     }
 	
-    /* id, pwd db conn 데이터와 동일하지 않을 경우 '회원정부 수정' 페이지로 전송*/
+    /* 'id, pwd, pwd2, name, phone2, phone3, gender, hobby' db conn 데이터와 동일하지 않을 경우
+    동일하지 않는 데이터를 유지'회원정부 수정' 페이지로 전송*/
     if (!loginSuccess) {
     	%>
     	    <form action="update.jsp" method="get">

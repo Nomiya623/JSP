@@ -52,7 +52,7 @@ textarea {
 </head>
 <body>
 	<h3>회원가입</h3>
-	<form action="updateView.jsp" name="join" method="post"
+	<form action="updateView2.jsp" name="join" method="post"
 		onsubmit="return validateForm()">
 		<div>
 			<span class="txt_input">아이디 : </span><input type="text" name="id">
