@@ -92,5 +92,7 @@ th {
 	function userUpdate(userId) {
 		location.href = "user_update.jsp?userId=" + userId;
 	}
+	
+	
 </script>
 
