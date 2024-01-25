@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<%request.setCharacterEncoding("UTF-8");%>
 <%
 	Connection conn;
 	Statement stmt = null;
@@ -19,8 +19,6 @@
 		conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		out.println("DB연결 완료");
 		stmt = conn.createStatement();
-		
-	
 %>
 </body>
 </html>
