@@ -17,7 +17,7 @@
 		String db_id = "system";
 		String db_pw = "test1234";
 		conn = DriverManager.getConnection(db_url, db_id, db_pw);
-		out.println("DB연결 완료");
+		/* out.println("DB연결 완료"); */
 		stmt = conn.createStatement();
 %>
 </body>

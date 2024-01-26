@@ -60,8 +60,12 @@ th {
 <body>
 	<%@ include file="dbconn.jsp"%>
 	<%
+	out.println(session.getAttribute("userId"));
+	
 	String sql = "SELECT * FROM TBL_MEMBER";
 	ResultSet rs = stmt.executeQuery(sql);
+	
+	
 	%>
 	<!-- 	아이디	이름	핸드폰번호	성별	취미1	취미2	취미3 -->
 
