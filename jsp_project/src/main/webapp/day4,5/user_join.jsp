@@ -19,7 +19,7 @@ preparedStatetement 아닌 Statement stmt 로 출력;
 	<form action="user_join_save.jsp" name="join" method="post">
 		<div>
 			<span class="txt_input">아이디 : </span><input type="text" name="userId">
-			<input type="button" value="중복검사">
+			<input type="button" value="중복검사" onclick= "idCheck()">
 		</div>
 		<div>
 			<span class="txt_input">비밀번호 : </span><input type="password"
@@ -41,4 +41,11 @@ preparedStatetement 아닌 Statement stmt 로 출력;
 	</form>
 </body>
 </html>
+<script>
+var join = document.join;
+	function idCheck(){
+		/* uder_idcheck.jsp */
+		pop = window.open("user_idCheck.jsp?userId=" + join.userId.value, "join", "width=300. height=300");
+	}
+</script>
 

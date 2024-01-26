@@ -35,12 +35,44 @@ a:hover {
 <body>
 	<%@ include file="dbconn.jsp"%>
 
+	<!-- [이름 or 아이디] 검색 기능 추가-->
+	<!-- [] 검색 기능 추가-->
 	<%
+	String searchKeyword = request.getParameter("searchKeyword");
+	String sql = "SELECT BOARDNO, TITLE, B.USERID, USERNAME, HIT, "
+			+ "TO_CHAR(CDATETIME, 'YY/MM/DD HH24:MI') AS CDATETIME, "
+			+ "TO_CHAR(UDATETIME, 'YY/MM/DD HH24:MI') AS UDATETIME " + "FROM TBL_BOARD B "
+			+ "INNER JOIN TBL_MEMBER M ON B.USERID = M.USERID";
+
+	if (searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+		sql += " WHERE USERNAME LIKE '%" + searchKeyword + "%' OR B.USERID LIKE '%" + searchKeyword + "%' OR TITLE LIKE '%" + searchKeyword;
+	}
+	
+	ResultSet rs = stmt.executeQuery(sql);
+	%>
+	
+	<%-- <% 
+    String searchKeyword = request.getParameter("search");
+    String sql = "SELECT BOARDNO, TITLE, B.USERID, USERNAME, HIT, TO_CHAR(CDATETIME, 'YY/MM/DD HH24:MI') AS CDATETIME, TO_CHAR(UDATETIME, 'YY/MM/DD HH24:MI') AS UDATETIME FROM TBL_BOARD B INNER JOIN TBL_MEMBER M ON B.USERID = M.USERID";
+    
+    if(searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+        sql += " WHERE USERNAME LIKE '%" + searchKeyword + "%' OR B.USERID LIKE '%" + searchKeyword + "%'";
+    }
+    ResultSet rs = stmt.executeQuery(sql);
+    %> --%>
+    
+	<form action="user_list.jsp" method="get">
+		검색어: <input type="text" name="searchKeyword"
+			value="<%=request.getParameter("searchKeyword") != null ? request.getParameter("searchKeyword") : ""%>">
+		<input type="submit" value="검색">
+	</form>
+
+	<%-- 	<%
 	String sql = "SELECT BOARDNO, TITLE, B.USERID, USERNAME, HIT," + "TO_CHAR(CDATETIME, 'YY/MM/DD HH24:MI') AS CDATETIME, "
 			+ "TO_CHAR(UDATETIME, 'YY/MM/DD HH24:MI') AS UDATETIME " + "FROM TBL_BOARD B "
 			+ "INNER JOIN TBL_MEMBER M ON B.USERID = M.USERID" + " ORDER BY CDATETIME DESC";
 	ResultSet rs = stmt.executeQuery(sql);
-	%>
+	%> --%>
 
 
 	<table>
@@ -63,11 +95,14 @@ a:hover {
 			<td><%=rs.getString("HIT")%></td>
 			<td><%=rs.getString("CDATETIME")%></td>
 			<td><%=rs.getString("UDATETIME")%></td>
-			<td>
-				<button
-					onclick="location.href='board_delete.jsp?boardNo=<%=rs.getString("BOARDNO")%>'">삭제</button>
-
+			<%-- <td>
+				<button onclick="boardUpdate('<%=rs.getString("BOARDNO")%>')"
+					class="updateButton">수정</button>
 			</td>
+			<td>
+				<button onclick="boardDelete('<%=rs.getString("BOARDNO")%>')"
+					class="deleteButton">삭제</button>
+			</td> --%>
 		</tr>
 		<%
 		}
@@ -81,7 +116,11 @@ a:hover {
 </body>
 </html>
 <script>
-	
+	var board = document.board_list;
+	function search() {
+		location.href = "board_list.jsp?searchKeyword=" + board.searchKeyword.value;
+
+	}
 </script>
 
 
