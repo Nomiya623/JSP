@@ -16,7 +16,7 @@
 		String commentNo = request.getParameter("commentNo");
 		String sql 
 			= "INSERT INTO TBL_COMMENT VALUES("
-			 + "COMMENT_SEQ.NEXTVAL,"
+			 + "COMM_SEQ.NEXTVAL,"
 			 + "'" + boardNo + "',"
 			 + "'" + comment + "',"
 			 + "'" + userId + "',"
@@ -24,7 +24,6 @@
 			 + "NULL,"
 			 + "SYSDATE,"
 			 + "SYSDATE )";
-
 		String updateSql 
 			= "UPDATE TBL_COMMENT SET"
 			+ " CMT = '" + comment + "'"
