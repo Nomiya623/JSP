@@ -44,7 +44,7 @@ preparedStatetement 아닌 Statement stmt 로 출력;
 <script>
 var join = document.join;
 	function idCheck(){
-		/* uder_idcheck.jsp */
+		/* user_idcheck.jsp */
 		pop = window.open("user_idCheck.jsp?userId=" + join.userId.value, "join", "width=300. height=300");
 	}
 </script>
